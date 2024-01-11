@@ -13,7 +13,7 @@ var database;
 const cs =
   "mongodb+srv://admin:admin@cluster0.lmpvayp.mongodb.net/?retryWrites=true&w=majority";
 
-const PORT = process.env.PORT || 5039;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   MongoClient.connect(
     process.env.MONGODB_CONNECT_URI,
