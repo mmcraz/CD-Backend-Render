@@ -10,23 +10,23 @@ app.use(cors());
 var DATABASENAME = "tododb";
 var database;
 
-const connectDB = require("./connectmongoose");
-connectDB();
+// const connectDB = require("./connectmongoose");
+// connectDB();
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log("Server is running on port " + PORT);
-});
+const PORT = process.env.PORT || 5039;
 // app.listen(PORT, () => {
-//   MongoClient.connect(
-//     process.env.MONGODB_CONNECT_URI,
-//     { useNewUrlParser: true, useUnifiedTopology: true },
-//     (error, client) => {
-//       database = client.db(DATABASENAME);
-//       console.log("Mongo DB Connection successful. Connected port is: ", +PORT);
-//     }
-//   );
+//   console.log("Server is running on port " + PORT);
 // });
+app.listen(PORT, () => {
+  MongoClient.connect(
+    process.env.MONGODB_CONNECT_URI,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    (error, client) => {
+      database = client.db(DATABASENAME);
+      console.log("Mongo DB Connection successful. Connected port is: ", +PORT);
+    }
+  );
+});
 
 app.get("/api/tododb/getData/", (request, response) => {
   database
