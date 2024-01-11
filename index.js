@@ -20,7 +20,7 @@ app.listen(PORT, () => {
     { useNewUrlParser: true, useUnifiedTopology: true },
     (error, client) => {
       database = client.db(DATABASENAME);
-      console.log("Mongo DB Connection successful");
+      console.log("Mongo DB Connection successful. Connected port is: ", +PORT);
     }
   );
 });
